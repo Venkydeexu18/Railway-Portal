@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SignUp</title>
+</head>
+<body>
+  <div class="login-container">
+  <div class="left-side">
+    <div class="logo">
+      <img src="./assets/image.png" alt="Logo">
+    </div>
+    <h2>Railway Portal</h2>
+    <h4>SignUp</h4>
+    <form [formGroup]="SignUpForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" placeholder="Username" formControlName="username">
+        @if (SignUpForm.get('username')?.touched && SignUpForm.get('username')?.invalid) {
+          <small>Username is required</small>
+        }
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" formControlName="password">
+        @if (SignUpForm.get('password')?.touched && SignUpForm.get('password')?.invalid) {
+          <small>Password must be at least 6 characters</small>
+        }
+      </div>
+      <div class="remember-me">
+        <label>
+          Already registered!
+        </label>
+      <a href="/login" class="forgot-password">User Login?</a>
+    </div>
+      <button type="submit" [disabled]="SignUpForm.invalid">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>SignUp</span>
+      </button>
+    </form>
+    <br>
+    @if (errorMessage) {
+      <div class="form-group">
+        {{ errorMessage }}
+      </div>
+    }
+    <p>Copyright: Deekshith</p>
+  </div>
+  <div class="right-side">
+    <img src="./assets/picc.avif" alt="Background Image">
+  </div>
+</div>
+</body>
+</html>

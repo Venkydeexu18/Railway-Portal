@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <div class="login-container">
+  <div class="left-side">
+    <div class="logo">
+      <img src="./assets/image.png" alt="Logo">
+    </div>
+    <h2>Railway Portal</h2>
+    <h4>Login</h4>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" placeholder="Username" formControlName="username">
+        @if (loginForm.get('username')?.touched && loginForm.get('username')?.invalid) {
+          <small>Username is required</small>
+        }
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Password" formControlName="password">
+        @if (loginForm.get('password')?.touched && loginForm.get('password')?.invalid) {
+          <small>Password must be at least 6 characters</small>
+        }
+      </div>
+      <div class="remember-me">
+          <label>
+            <input type="checkbox" formControlName="rememberMe" />
+            Remember Me
+          </label>
+        <a href="#" class="forgot-password">Forgot password?</a>
+      </div>
+      <button type="submit" [disabled]="loginForm.invalid">
+        <i class="fas fa-sign-in-alt"></i>
+        <span>Login</span>
+      </button>
+    </form>
+    <br>
+    <p>Copyright: Deekshith</p>
+  </div>
+  <div class="right-side">
+    <img src="./assets/picc.avif" alt="Background Image">
+  </div>
+</div>
+</body>
+</html>
